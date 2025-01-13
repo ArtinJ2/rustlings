@@ -25,10 +25,23 @@ enum Command {
 
 mod my_module {
     use super::Command;
+    pub fn transformer(input: (String, Command)) -> String { 
+        match Command::Uppercase {
+            String = String.upper()
+        }
+        match Command::Trim{
 
+        }
+        match Command::Append(usize) {
+            for 1..usize{
+                String = String.push(bar)
+            }
+        }
+    }
+    }
     // TODO: Complete the function as described above.
     // pub fn transformer(input: ???) -> ??? { ??? }
-}
+
 
 fn main() {
     // You can optionally experiment here.
