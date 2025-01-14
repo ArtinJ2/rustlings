@@ -25,17 +25,17 @@ enum Command {
 mod my_module {
     use super::Command;
     pub fn transformer(input: (String, Command)) -> String { 
-        let i = 0;
+        let mut i = 0;
        match input.1 {
-        Command::Uppercase => input.0,
-        Command::Trim => input.0,
-        Command::Append(usize) => {
-            while i < usize {
+        Command::Uppercase => input.0.to_uppercase(),
+        Command::Trim => input.0.trim().to_string(),
+        Command::Append(count) => {
+            let mut s = input.0;
+            while i < count {
             i = i+1;    
-            input.0 = input.0 + "bar";
-            return input.0.to_string();
+            s = s + "bar";
             }
-
+            s.to_string()
         }
         
        }
@@ -47,7 +47,9 @@ mod my_module {
 
 
 fn main() {
-    // You can optionally experiment here.
+    use my_module::transformer;
+    let result = transformer(("bar".to_string(), Command::Append(5)));
+    println!("{result}");
 }
 
 #[cfg(test)]
@@ -55,6 +57,7 @@ mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
     // use ???;
     use super::Command;
+    use my_module::transformer;
 
     #[test]
     fn it_works() {
