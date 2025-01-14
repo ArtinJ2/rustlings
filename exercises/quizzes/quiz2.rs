@@ -32,10 +32,12 @@ mod my_module {
             let i = 0;
             while i < usize {
             i = i+1;    
-            input.0 = input.0 + "bar"
+            input.0 = input.0 + "bar";
+            input.0 = input.0.to_string()
             }
 
         }
+        
        }
        
     }
