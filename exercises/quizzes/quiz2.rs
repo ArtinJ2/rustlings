@@ -25,15 +25,15 @@ enum Command {
 mod my_module {
     use super::Command;
     pub fn transformer(input: (String, Command)) -> String { 
+        let i = 0;
        match input.1 {
         Command::Uppercase => input.0,
         Command::Trim => input.0,
         Command::Append(usize) => {
-            let i = 0;
             while i < usize {
             i = i+1;    
             input.0 = input.0 + "bar";
-            input.0 = input.0.to_string()
+            return input.0.to_string();
             }
 
         }
