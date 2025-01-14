@@ -16,7 +16,6 @@
 // - The input is going to be a Vector of 2-length tuples,
 //   the first element is the string, the second one is the command.
 // - The output element is going to be a vector of strings.
-
 enum Command {
     Uppercase,
     Trim,
@@ -26,17 +25,19 @@ enum Command {
 mod my_module {
     use super::Command;
     pub fn transformer(input: (String, Command)) -> String { 
-        match Command::Uppercase {
-            String = String.upper()
-        }
-        match Command::Trim{
+       match input.1 {
+        Command::Uppercase => input.0,
+        Command::Trim => input.0,
+        Command::Append(usize) => {
+            let i = 0;
+            while i < usize {
+            i = i+1;    
+            input.0 = input.0 + "bar"
+            }
 
         }
-        match Command::Append(usize) {
-            for 1..usize{
-                String = String.push(bar)
-            }
-        }
+       }
+       
     }
     }
     // TODO: Complete the function as described above.
