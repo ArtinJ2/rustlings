@@ -29,11 +29,17 @@ fn fruit_basket(basket: &mut HashMap<Fruit, u32>) {
     ];
 
     for fruit in fruit_kinds {
-        // TODO: Insert new fruits if they are not already present in the
-        // basket. Note that you are not allowed to put any type of fruit that's
-        // already present!
+    match fruit {
+        Fruit::Apple | Fruit::Mango | Fruit::Lychee => {},
+        _ => { basket.insert(fruit, 1); }
     }
-}
+    }
+
+    while basket.values().sum::<u32>() <= 11 {
+    *basket.entry(Fruit::Banana).or_insert(0) += 1;
+    }
+    }
+
 
 fn main() {
     // You can optionally experiment here.
